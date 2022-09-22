@@ -22,16 +22,13 @@ public class TicTacToe {
                 System.out.println("Turn: X");
                 int[] spot = askUser(board);
                 board[spot[0]][spot[1]] = 'X';
-                if (checkWin(board)) {
-                  System.out.println("Player X wins!");
-                }
+                checkWin(board);
+               
               } else {
                 System.out.println("Turn: O");
                 int[] spot = askUser(board);
                 board[spot[0]][spot[1]] = 'O';
-                if (checkWin(board)) {
-                  System.out.println("Player O wins!");
-                }
+               
               }
               printBoard(board);
             }
@@ -101,7 +98,7 @@ public class TicTacToe {
       System.out.print(" - pick a row and column number: ");
       int row = scan.nextInt();
       int element = scan.nextInt();
-      while (board[row][element] == 'X' || board[row][element] == 'Y') {
+      while (board[row][element] == 'X' || board[row][element] == 'O') {
         System.out.print("Spot taken, try again: ");
         row = scan.nextInt();
         element = scan.nextInt();
@@ -121,19 +118,23 @@ public class TicTacToe {
      *   4. Check the left diagonal for a straight X or straight O (Task 9).
      *   5. Check the right diagonal for a straight X or straight O (Task 10).
      */
-    public static boolean checkWin(char[][] board) {
+    public static int checkWin(char[][] board) {
       int count = 0;
-      for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-          if (board[i][j] == 'O' || board[i][j] == 'X') {
-            count ++;
+      for (int i = 0; i < board.length; i++) {
+        for (int j = 0; j < board[i].length; j++) {
+          if (board[i][j] == 'X') {
+            count++;
+          } else if (board[i][j] == 'O') {
+            count--;
           }
         }
       }
-      if (count == 3) {
-        return true;
-      }
-      return false;
+      if (count == 3 || count == -3) {
+        System.out.println("wen");
+        return count;
+      } 
+      System.out.println("Count is " + count);
+      return count;
     }
 
 }
