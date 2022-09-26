@@ -49,14 +49,24 @@ public class TicTacToe {
                   System.out.println("Turn: " + turn);
                   int[] update = askUser(board);
                   board[update[0]][update[1]] = 'X';
-                  printBoard(board);
                 } 
                 if (i % 2 == 1) {
                   char turn = 'O';
                   System.out.println("Turn: " + turn);
                   int[] update = askUser(board);
                   board[update[0]][update[1]] = 'O';
-                  printBoard(board);
+                }
+                printBoard(board);
+                int count = checkWin(board);
+
+                if (count == 3) {
+                  System.out.println("X wins!!");
+                  break;
+                } else if (count == -3) {
+                  System.out.println("O Wins!!");
+                  break;
+                } else if (i == 8) {
+                  System.out.println("It's a tie!");
                 }
               }
 
@@ -125,6 +135,67 @@ public class TicTacToe {
      *   4. Check the left diagonal for a straight X or straight O (Task 9).
      *   5. Check the right diagonal for a straight X or straight O (Task 10).
      */
+    public static int checkWin(char[][] board) {
+      int count = 0;
 
+      for (int i = 0; i < board.length; i++) {
+        for (int j = 0; j < board[i].length; j++) {
+          if (board[i][j] == 'X') {
+            count++;
+          }else if (board[i][j] == 'O') {
+            count--;
+          }
+        }
+        if (count == 3 || count == -3) {
+          return count;
+        } else {
+          count = 0;
+        }
+      }
 
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < board.length; j++) {
+          if (board[j][i] == 'X') {
+            count++;
+          } else if (board[j][i] == 'O') {
+            count--;
+          }
+        }
+        if (count == 3 || count == -3) {
+          return count;
+        } else {
+          count = 0;
+        }
+      }
+
+      for (int i = 0; i < 3; i++) {
+        if (board[i][i] == 'X') {
+          count++;
+        } else if (board[i][i] == 'O') {
+          count--;
+        }
+      }
+      if (count == 3 || count == -3) {
+        return count;
+      } else {
+        count = 0;
+      }
+
+      for (int i = 0; i < 3; i++) {
+        int rowIndex = 2 - i;
+        if (board[rowIndex][i] == 'X') {
+          count++;
+        } if (board[rowIndex][i] == 'O') {
+          count--;
+        }
+      }
+      if (count == 3 || count == -3) {
+        return count;
+      } else {
+        count = 0;
+      }
+      
+      return count;
+    }
 }
+
