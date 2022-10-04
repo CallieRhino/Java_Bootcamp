@@ -1,3 +1,4 @@
+import java.util.Random;
 public class Person {
     private String name;
     private String nationality;
@@ -10,6 +11,13 @@ public class Person {
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
         this.seatNumber = seatNumber;
+    }
+
+    Person(Person source) {
+        this.name = source.getName();
+        this.nationality = source.getNationality();
+        this.dateOfBirth = source.getDateOfBirth();
+        this.seatNumber = source.getSeatnumber();
     }
 
     public String getName() {
@@ -43,5 +51,22 @@ public class Person {
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
     }
+
+    public boolean applyPassport() {
+        Random rand = new Random();
+        int n = rand.nextInt(50);
+        if (n % 2 == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public void chooseSeat() {
+        Random rand = new Random();
+        int n = rand.nextInt(11);
+        this.seatNumber = n;
+    }
+
+   
 
 }
