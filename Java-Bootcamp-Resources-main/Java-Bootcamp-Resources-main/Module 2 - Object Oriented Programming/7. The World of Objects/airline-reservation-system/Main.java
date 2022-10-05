@@ -5,10 +5,13 @@ public class Main {
 
         Person person = new Person("Callie", "Afrika",
          "07/03/86", 1); 
+
         if (person.applyPassport() == true) {
-            
-    
-    
-        }
+            person.setPassport();
+            }
+
+        System.out.println(person);
+
+          
      }
 }
