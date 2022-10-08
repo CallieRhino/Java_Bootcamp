@@ -12,6 +12,7 @@ public class Person {
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
         this.seatNumber = seatNumber;
+        this.passport = new String[3];
     }
 
     Person(Person source) {
@@ -19,6 +20,7 @@ public class Person {
         this.nationality = source.nationality;
         this.dateOfBirth = source.dateOfBirth;
         this.seatNumber = source.seatNumber;
+        this.passport = Arrays.copyOf(source.passport, source.passport.length);
     }
 
     public String getName() {
@@ -70,9 +72,7 @@ public class Person {
     }
 
     public void chooseSeat() {
-        Random rand = new Random();
-        int n = rand.nextInt(11);
-        this.seatNumber = n;
+        this.seatNumber = (int) (Math.random() * 11 + 1);
     }
 
     public String toString() {
@@ -82,6 +82,7 @@ public class Person {
         +  "Seat Number: " + this.seatNumber + "\n"
         +  "Passport: " + Arrays.toString(passport) + "\n";
     }
+
 
    
 }
