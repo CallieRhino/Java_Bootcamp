@@ -15,18 +15,28 @@ public class Main {
         
         Dealership dealership = new Dealership(cars);
         
-
-        /** Task 1 – Add user input.
-         *  
-         *   System.out.println("\n ****** JAVA DEALERSHIP! ****** \n");
-         *   System.out.print("Welcome! Enter the type of car you're looking for: ");
-         *   //pick up make
-         *   System.out.print("Enter your budget: ");
-         *   //pick up budget
-         * 
-         */
+        System.out.println("\n ****** JAVA DEALERSHIP! ****** \n");
+        System.out.print("Welcome! Enter the type of car you're looking for: ");
+        String askMake = scan.next();
+        System.out.print("Enter your budget: ");
+        int askBudget = scan.nextInt();
+        scan.nextLine();
 
         // Task 3 - Call the search action.
+
+        int getFeedback = dealership.search(askMake, askBudget);
+
+        if (getFeedback == 404) {
+            System.out.println("Feel free to browse through our collection of cars.\n");
+            System.out.println(dealership);
+        } else {
+            System.out.print("If you're interested, type 'yes': ");
+            String getSale = scan.nextLine();
+            if (getSale.equals("yes")) {
+                dealership.sell(getFeedback);
+            }
+        }
+
 
         /* Task 4: case 404
                println : Feel free to browse through our collection of cars.\n

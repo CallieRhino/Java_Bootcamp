@@ -135,7 +135,7 @@ public class Hangman {
         char userChar = userGuess.charAt(0);
         for (int i = 0; i < word.length(); i++) {
             if (userChar == word.charAt(i)) {
-                sb.setCharAt(i, userChar);;
+                sb.setCharAt(i, userChar);
             } 
         }
         return sb.toString();
