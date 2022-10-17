@@ -1,4 +1,3 @@
-import java.sql.Time;
 
 public class Machine {
     private Item[][] items;
@@ -15,8 +14,7 @@ public class Machine {
 
     
     public Item getItems(int row, int spot) {
-        System.out.println(this.items[2][1]);
-        return this.items[row][spot];
+        return new Item(this.items[row][spot]);
     }
     
      public void setItems(Item item, int row, int spot) {
@@ -34,4 +32,27 @@ public class Machine {
      *      • if so: decreases its quantity by one and returns true.
      *      • otherwise: returns false.
      */
+
+     public boolean dispense(int row, int spot) {
+        int count = this.items[row][spot].getQuantity();
+        if (count > 0) {
+            this.items[row][spot].setQuantity(count - 1);
+            return true;
+        }
+        return false;
+     }
+
+    public String toString() {
+        String temp = "";
+
+        for (int i = 0; i < items.length; i++) {
+            temp+=("\t");
+            for (int j = 0; j < items[i].length; j++) { 
+                temp += this.items[i][j].toString();
+            }
+            temp+=("\n\n");
+        }
+        temp += "\t************************************************";
+        return temp;
+    }
 }
