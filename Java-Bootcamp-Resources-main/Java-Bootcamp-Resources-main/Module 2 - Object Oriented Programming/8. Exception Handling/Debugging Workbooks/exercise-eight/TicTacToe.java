@@ -1,3 +1,5 @@
+import java.io.ObjectOutputStream.PutField;
+
 public class TicTacToe {
     public static void main(String[] args) {
         char[][] array = {
@@ -7,7 +9,11 @@ public class TicTacToe {
         };
         
         for (int i = 0; i < array.length; i++) {
+            
                array[i][2-i] = 'O';
+               if (array[2-i][2-1] != '_') {
+                continue;
+               }
                array[2-i][2-i] = 'X';
         }
 
@@ -24,4 +30,5 @@ public class TicTacToe {
            System.out.println();
        }
    }
+
 }

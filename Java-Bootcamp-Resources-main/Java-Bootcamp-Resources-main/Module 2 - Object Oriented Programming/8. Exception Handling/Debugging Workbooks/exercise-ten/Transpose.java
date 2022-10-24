@@ -7,9 +7,12 @@ public class Transpose {
             {4, 5, 6},
             {7, 8, 9}
         };
+
+        int[][] copy = Arrays.stream(matrix).map(int[]::clone).toArray(int[][]::new);
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = matrix[j][i];
+                matrix[i][j] = copy[j][i];
             }
         }
 
