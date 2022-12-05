@@ -6,6 +6,7 @@ public class Machine {
         this.items = new Item[items.length][items[0].length];
         for (int i = 0; i < items.length; i++) {
             for (int j = 0; j < items[i].length; j++) {
+
                 this.items[i][j] = new Item(items[i][j]);
             }
         }
@@ -20,6 +21,9 @@ public class Machine {
     }
 
     public void dispense(int row, int spot) {
+        if (items[row][spot].getQuantity() == 0) {
+            throw new IllegalArgumentException("Out of stock");
+        }
         items[row][spot].setQuantity(items[row][spot].getQuantity() - 1);
     }
 
