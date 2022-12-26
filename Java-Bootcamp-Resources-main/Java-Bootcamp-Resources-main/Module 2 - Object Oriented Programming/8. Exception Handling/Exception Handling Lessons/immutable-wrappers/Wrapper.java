@@ -1,8 +1,12 @@
 public class Wrapper {
     public static void main(String[] args) {
-        int wholeNumber = 5;
-        long largeWholeNumber = 5000000000L;
-        double decimal = 5.493;
-        char letter = 'b';
+        Integer wholeNumber = 5;
+        Integer newNum = wholeNumber + 5;
+        Long largeWholeNumber = 5000000000L;
+        Double decimal = 5.493;
+        Character letter = 'b';
+
+        System.out.println(wholeNumber);
+        System.out.println(newNum);
     }
 }

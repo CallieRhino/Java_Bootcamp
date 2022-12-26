@@ -1,6 +1,11 @@
+import models.Contact;
+
 public class Main {
     public static void main(String[] args) {
         
+        Contact c = new Contact("piet", "999", "07/03/1986");
+
+        c.printContact();
       
         
     }
